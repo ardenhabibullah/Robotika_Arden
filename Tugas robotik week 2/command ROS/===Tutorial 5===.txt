@@ -1,0 +1,9 @@
+===Tutorial 5===
+mkdir scripts
+touch my_first_node.py
+chmod +x my_first_node.py
+code .
+python3 my_first_node.py
+roscore
+gedit ~/.bashrc
+rosrun my_robot_controller my_first_node.py
