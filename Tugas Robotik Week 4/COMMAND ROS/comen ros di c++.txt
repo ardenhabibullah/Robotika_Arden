@@ -1,0 +1,19 @@
+ros2 pkg create \
+ --build-type ament_cmake \
+ --dependencies moveit_ros_planning_interface rclcpp \
+ --node-name hello_moveit hello_moveit
+
+colcon build --mixin debug
+
+cd ~/ws_moveit
+source install/setup.bash
+
+ros2 run hello_moveit hello_moveit
+
+colcon build --mixin debug
+
+ros2 launch moveit2_tutorials demo.launch.py
+
+ros2 run hello_moveit hello_moveit
+
+[ERROR] [1644181704.350825487] [hello_moveit]: Could not find parameter robot_description and did not receive robot_description via std_msgs::msg::String subscription within 10.000000 seconds.

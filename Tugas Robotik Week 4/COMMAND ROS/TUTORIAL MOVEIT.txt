@@ -1,0 +1,45 @@
+# Sumber ROS MoveIt
+source /opt/ros/rolling/setup.bash
+
+# Inisialisasi rosdep
+sudo rosdep init
+rosdep update
+
+# Update sistem paket
+sudo apt update
+sudo apt dist-upgrade
+
+# Instal ekstensi colcon untuk Python 3
+sudo apt install python3-colcon-common-extensions
+sudo apt install python3-colcon-mixin
+
+# Tambah dan update colcon mixin repository
+colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+colcon mixin update default
+
+# Instal vcstool untuk menangani beberapa repositori
+sudo apt install python3-vcstool
+
+# Buat direktori workspace untuk MoveIt dan clone repositori
+mkdir -p ~/ws_moveit/src
+cd ~/ws_moveit/src
+git clone -b main https://github.com/moveit/moveit2_tutorials
+vcs import --recursive < moveit2_tutorials/moveit2_tutorials.repos
+
+# Hapus instalasi MoveIt sebelumnya jika ada, dan install dependensi dari repositori
+sudo apt remove ros-$ROS_DISTRO-moveit*
+sudo apt update && rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y
+
+# Build workspace dengan mixin release
+cd ~/ws_moveit
+colcon build --mixin release
+
+# Source setup dan tambahkan ke .bashrc agar otomatis ter-source
+source ~/ws_moveit/install/setup.bash
+echo 'source ~/ws_moveit/install/setup.bash' >> ~/.bashrc
+
+# Jalankan tutorial demo MoveIt
+ros2 launch moveit2_tutorials demo.launch.py
+
+# Jalankan demo dengan konfigurasi RViz kustom
+ros2 launch moveit2_tutorials demo.launch.py rviz_config:=your_rviz_config.rviz
