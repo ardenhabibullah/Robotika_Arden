@@ -1,0 +1,6 @@
+catkin_make
+source devel/setup.bash
+roscore
+rosrun rrt-planning prm
+rviz
+rosrun tf static_transform_publisher 0 0 0 0 0 0 1 map base_link 10
