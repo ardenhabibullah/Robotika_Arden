@@ -1,0 +1,7 @@
+roscore  # Menyalakan layanan inti ROS.
+git clone https://github.com/PacktPublishing/Mastering-ROS-for-Robotics-Programming-Third-edition
+cd Chapter2  # Masuk ke folder.
+catkin_make  # Membangun file yang ada.
+source devel/setup.bash #membangun workspace
+rosrun <nama_folder> <nama_file>  # Menjalankan file Publisher.
+rosrun <nama_folder> <nama_file_subscriber>  # Menjalankan file Subscriber.

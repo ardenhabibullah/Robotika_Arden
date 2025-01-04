@@ -1,0 +1,33 @@
+1. Membuat Paket ROS
+catkin_create_pkg package_name [dependency1] [dependency2] #Membuat paket baru dengan nama dan dependensi tertentu.
+
+2. Membangun Workspace
+catkin_make #Membangun semua paket dalam workspace catkin.
+
+3. Menjalankan ROS Master
+roscore #Memulai ROS Master untuk mengatur komunikasi antar-node.
+
+4. Mendaftar Topik Aktif
+rostopic list #Menampilkan semua topik aktif dalam sistem ROS.
+
+5. Menerbitkan ke Topik
+rostopic pub /topic_name message_type args #Mengirimkan pesan ke topik tertentu.
+Contoh: rostopic pub /numbers std_msgs/Int32 10
+
+6. Menyubscribe ke Topik
+rostopic echo /topic_name #Menampilkan pesan yang diterima dari topik tertentu.
+
+7. Memeriksa Pesan
+rosmsg show message_type #Menampilkan struktur data pesan untuk tipe tertentu.
+Contoh: rosmsg show std_msgs/Int32
+
+8. Bekerja dengan Layanan
+
+Memanggil Layanan: rosservice call /service_name args #Memanggil layanan tertentu dengan parameter yang sesuai.
+Mendaftar Layanan: rosservice list #Menampilkan semua layanan yang tersedia.
+Mendapatkan Info Layanan: rosservice info /service_name #Menampilkan detail layanan tertentu.
+
+9. Menggunakan Parameter Server
+rosparam set parameter_name value #Mengatur nilai parameter pada server parameter.
+rosparam get parameter_name #Mengambil nilai parameter dari server parameter.
+rosparam list #Menampilkan semua parameter pada server parameter.

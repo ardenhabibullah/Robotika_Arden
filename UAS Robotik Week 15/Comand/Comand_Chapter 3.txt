@@ -1,0 +1,5 @@
+cd Chapter3  # Masuk ke folder Chapter3.
+catkin_make  # Membangun file di folder tersebut.
+source devel/setup.bash #membangun workspace
+roslaunch <nama folder> <nama file>  # Meluncurkan file untuk RViz.
+

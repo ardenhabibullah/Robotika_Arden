@@ -1,0 +1,4 @@
+cd Chapter4  # Masuk ke folder Chapter4.
+catkin_make  # Bangun file di folder tersebut.
+source devel/setup.bash #membangun workspace
+roslaunch <nama folder> <nama file>  # Meluncurkan simulasi di gazebo

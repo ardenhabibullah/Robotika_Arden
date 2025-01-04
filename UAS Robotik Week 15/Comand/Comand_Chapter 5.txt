@@ -1,0 +1,9 @@
+tar vxf CoppeliaSim_Edu_V4_8_0_rev0_Ubuntu20_04.tar  #Ekstrak File CoppeliaSim
+echo "export COPPELIASIM_ROOT=$HOME/Downloads/CoppeliaSim" >> ~/.bashrc #Setel Variabel Lingkungan.
+source ~/.bashrc #Setel Variabel Lingkungan.
+sudo apt-get update #Install Dependensi.
+sudo apt-get install liblua5.3-dev qt5-qmake qtbase5-dev #Install Dependensi.
+roscore  # Jalankan ROS Core.
+cd $COPPELIASIM_ROOT #Jalankan CoppeliaSim
+./coppeliaSim.sh #Jalankan CoppeliaSim
+rosnode list  # Pastikan sim_ros_interface terlihat.
